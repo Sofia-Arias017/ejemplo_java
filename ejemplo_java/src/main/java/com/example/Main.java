@@ -1,228 +1,173 @@
 package com.example;
 
 import java.util.Random;
-
 import java.util.Scanner;
 
 import main.java.com.example.ejercicios.Camper;
 import main.java.com.example.ejercicios.Factorial;
 import main.java.com.example.ejercicios.Trainer;
 import main.java.com.example.game.ahorcado.Ahorcado;
+import main.java.com.example.bank.BankAccount;
+import main.java.com.example.bank.User;
 
 public class Main {
 
-    // Variables fuera de métodos deben ser estáticas si se usan en main
-    // static String saludo = "Hello World";
-    // public static float ohNoRayos = 0.5f;
-    // public static final int DIAS_SEMANALES = 7;
+    final static int maxRange = 10000;
 
-    // public static void main(String[] args) {
-
-    // // Declaramos variables
-    // int numero = 100;
-    // long otroNumero = 10L;
-    // boolean bandera = true;
-    // float decimal = 0.5f;
-    // double decimalPro = 0.5;
-    // char caracter = 'A';
-
-    // // Llamamos variables
-    // System.out.println(saludo);
-    // System.out.println(numero);
-    // System.out.println(otroNumero);
-    // System.out.println(bandera);
-    // System.out.println(decimal);
-    // System.out.println(decimalPro);
-    // System.out.println(caracter);
-
-    // // ARRAY
-    // System.out.println("Tipos referencias");
-
-    // int[] numeros = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-    // System.out.println(numeros[0]);
-    // System.out.println(numeros[1]);
-    // System.out.println(numeros[2]);
-    // System.out.println(numeros[3]);
-    // System.out.println(saludo);
-
-    // // Constante
-    // final int xdex = 0;
-    // System.out.println(xdex);
-
-    // main2(args); // Llamado al segundo método
-    // }
-
-    // // MATEMÁTICAS
-    // public static void main2(String[] args) {
-    // System.out.println(1 + 2);
-    // System.out.println(1 - 2);
-    // System.out.println(1 * 2);
-    // System.out.println(1 / 2);
-    // System.out.println(10 % 2);
-
-    // // Math.pow necesita 2 argumentos
-    // System.out.println(Math.pow(2, 3)); // 2^3 = 8
-
-    // // Llamado a circunferencia
-    // System.out.println("Circunferencia: " + circunferencia(30));
-
-    // // Ejercicio actividades
-    // int dia = 5;
-    // actividades(dia);
-    // actividades(++dia);
-    // actividades(dia++);
-    // actividades(dia);
-    // }
-
-    // public static double circunferencia(int diametro) {
-    // return 2 * Math.PI * diametro;
-    // }
-
-    // public static void actividades(int dia) {
-    // String[] cosasPorHacer = {
-    // "Hacer modulos ingles",
-    // "Venir a campus",
-    // "Irme de campus",
-    // "Dormir",
-    // "Ser feliz",
-    // "Repasar Java :(",
-    // "No volver a Campus"
-    // };
-
-    // System.out.println("¿Qué nos toca hacer HOY?");
-
-    // if (dia >= 7) {
-    // System.out.println("Bye!");
-    // } else {
-    // System.out.println(cosasPorHacer[dia]);
-    // System.out.println("Día: " + dia);
-    // }
-    // }
-
-    // public class Main {
-    // final static int maxRange = 10000;
-    // public static void main(String[] args) {
-    // Scanner scan = new Scanner(System.in);
-    // Random random = new Random();
-    // System.out.println("Ingrese el valor minimo: ");
-    // var min = scan.nextInt();
-    // System.out.println("Ingrese el valor minimo: ");
-    // var max = scan.nextInt();
-    // int [] numbers = new int [maxRange];
-    // for (int a=0; a< numbers.length; a++) {
-    // numbers[a] = random.nextInt(min, max+1);
-    // }
-    // system.out.println("Ingrese la cantidad de numeros a buscar: ");
-    // var counter = scan.nextInt();
-    // for( int a=0; a < counter; a++) {
-    // system.out.println("Ingrese el indice a buscar [ 1hasta + "+maxRange+"]: " );
-    // var index =scan.nextInt();
-    // system.out.println("Oye el indice es: " + (index) + " = " + numbers[index -1]
-    // );
-
-    // }
-    // scan.close();
-    // }
-    // }
-
-    public static void main1(String[] args) {
-        // Scanner scan = new Scanner(System.in);
-        // System.out.println("Ingrese el titulo del libro: ");
-        // var titulo = scan.nextLine();
-        // System.out.println("Ingrese el autor del libro: ");
-        // var autor = scan.nextLine();
-        // System.out.println("Ingrese el anio de la publicacion: ");
-        // var anio = scan.nextInt();
-        // scan.nextLine();
-        // System.out.println("Ingrese el genero del libro: ");
-        // var genero = scan.nextLine();
-        // System.out.println("Ingrese el numero de paginas: ");
-        // var paginas = scan.nextLine();
-
-        // System.out.println("Titulo: " + titulo);
-        // System.out.println("Autor del libro: " + autor);
-        // System.out.println("Anio de publicacion: " + anio);
-        // System.out.println("Genero del libro: " + genero);
-        // System.out.println("Numero de paginas: " + paginas);
-    }
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         boolean flag = true;
+
         var ahoracado = new Ahorcado();
         var factorial = new Factorial();
+        var account = new BankAccount();
+
         while (flag) {
             System.out.println("""
-                    ++++++++++++++  MENU  ++++++++++++++
-                            ** Ingrese la opcion deseada **
-                    1. Jugar al Ahoracado
-                    2. Palabras Adivinadas
+                    ======= MENU PRINCIPAL =======
+                    1. Jugar Ahorcado
+                    2. Ver palabras adivinadas
+                    3. Probar Camper
+                    4. Probar Trainer
+                    5. Banco
+                    6. Registrar Libro
                     0. Salir
                     """);
-            switch (scan.nextInt()) {
+
+            int opcion = scan.nextInt();
+
+            switch (opcion) {
+
+                // Opcion 1 - Jugar Ahorcado
                 case 1:
-                ahoracado.iniciar("X");
+                    ahoracado.iniciar("X");
                     ahoracado.ejecutar(scan);
                     break;
+
+                // Opcion 2 - Ver palabras adivinadas
                 case 2:
                     System.out.println(ahoracado.palabrasAdivinadas);
                     break;
+
+                // Opcion 3 - Probar Camper
                 case 3:
-                    //Administrativo
-                    //Trainer
-                    //Colabarador
-                    Camper camper = new Camper("Andrues","Perrea",16,
-                    "TI", "10051234512",
-                    "?","adrian@gmail.com","12345600");
-                    System.out.println(camper.telefono);
-                    /*camper.nombre = "Andrues";
-                    camper.apellido = "Perrea";
-                    camper.edad = 16;
-                    camper.tipoDocumento = "TI";
-                    camper.documento = "1005123456";
-                    camper.estratoSocial = -1;
-                    camper.genero = "?";
-                    camper.email = "andresitto_777@gmail.com";*/
+                    Camper camper = new Camper(
+                            "Andrues", "Perrea", 16,
+                            "TI", "10051234512",
+                            "?", "adrian@gmail.com", "12345600"
+                    );
+
+                    System.out.println("Telefono inicial: " + camper.telefono);
                     camper.telefono = "018000918080";
-                    System.out.println(camper.telefono);
-                    //camper.nivelIngles = 10;
+                    System.out.println("Telefono actualizado: " + camper.telefono);
 
                     camper.dormir();
                     camper.divertirse();
-
                     camper.cambiarNombre("Poncio Zuleta");
                     camper.reportar();
                     camper.calificar();
-
-
                     break;
 
+                // Opcion 4 - Probar Trainer
                 case 4:
                     Trainer trainer = new Trainer();
                     trainer.nombre = "Adriaaaaann";
                     trainer.apellido = "Nunez";
-                    /*trainer.edad = 27;
-                    trainer.tipoDocumento = "CC";
-                    trainer.documento = "1097101921";
-                    trainer.estratoSocial = 8;
-                    trainer.genero = "masculino";
-                    trainer.email = "adriannnnn00@gmail.com";
-                    trainer.telefono = "018000918080";
-                    trainer.skill = "Software";*/
-
 
                     trainer.dormir();
                     trainer.divertirse();
                     trainer.eseniar();
                     trainer.tomacafe();
+                    break;
 
+                // Opcion 5 - Banco
+                case 5:
+                    boolean menuBanco = true;
+                    while (menuBanco) {
+                        System.out.println("""
+                                ======= MENU BANCO =======
+                                1. Consignar
+                                2. Retirar
+                                3. Ver Saldo
+                                4. Probar Usuario
+                                0. Volver
+                                """);
+
+                        int opcionBanco = scan.nextInt();
+
+                        switch (opcionBanco) {
+                            case 1:
+                                System.out.println("Monto a depositar: ");
+                                account.deposit(scan.nextInt());
+                                break;
+                            case 2:
+                                System.out.println("Monto a retirar: ");
+                                account.withdraw(scan.nextInt());
+                                break;
+                            case 3:
+                                System.out.println("Saldo: $" + account.showBalance());
+                                break;
+                            case 4:
+                                User user1 = new User();
+                                user1.setUsername("sofia");
+                                user1.setPassword("1234");
+
+                                boolean resultado = user1.checkPassword("1234");
+
+                                if (resultado) {
+                                    System.out.println("Contrasena correcta");
+                                } else {
+                                    System.out.println("Contrasena incorrecta");
+                                }
+                                break;
+                            case 0:
+                                menuBanco = false;
+                                break;
+                            default:
+                                System.out.println("Opcion invalida");
+                                break;
+                        }
+                    }
+                    break;
+
+                // Opcion 6 - Registrar Libro
+                case 6:
+                    scan.nextLine();
+                    System.out.println("Titulo del libro: ");
+                    var titulo = scan.nextLine();
+                    System.out.println("Autor del libro: ");
+                    var autor = scan.nextLine();
+                    System.out.println("Anio de publicacion: ");
+                    var anio = scan.nextInt();
+                    scan.nextLine();
+                    System.out.println("Genero: ");
+                    var genero = scan.nextLine();
+                    System.out.println("Numero de paginas: ");
+                    var paginas = scan.nextLine();
+
+                    System.out.println("\n=== INFO DEL LIBRO ===");
+                    System.out.println("Titulo: " + titulo);
+                    System.out.println("Autor: " + autor);
+                    System.out.println("Anio: " + anio);
+                    System.out.println("Genero: " + genero);
+                    System.out.println("Paginas: " + paginas);
+                    System.out.println("=======================");
+                    break;
+
+                // Opcion 0 - Salir
                 case 0:
-                    // Salir
                     flag = false;
+                    System.out.println("Chao, programa cerrado");
+                    break;
+
+                // Opcion invalida
+                default:
+                    System.out.println("Opcion invalida");
+                    scan.nextLine();
+                    break;
             }
         }
-     }
-    
-}
- 
 
-                    
+        scan.close();
+    }
+}
